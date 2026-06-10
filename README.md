@@ -1,6 +1,6 @@
 # 📦 Raycaster-attempt
 
-This is my attempt at making the raycaster. Maybe its code will be used by me in the future.
+This is my attempt at making a raycaster. Maybe its code will be used by me in the future.
 
 ## 🌟 Highlights
 
