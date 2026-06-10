@@ -34,6 +34,8 @@ cd RaycasterAttemptLINUX
 ./RaycasterAttempt
 ```
 
+On windows, there's NO support. Build it yourself. Sorry. It may change in the future.
+
 ## 🕹️ Controls
 
 WASD - Move;
@@ -44,7 +46,6 @@ Mouse - Turn left, right;
 
 ESC - quit;
 
-On windows, there's NO support. Sorry. It may change in the future.
 
 ## 🔨 Building
 You need:
