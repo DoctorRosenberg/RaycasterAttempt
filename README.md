@@ -30,7 +30,7 @@ Install a working build or build the source code first.
 On linux, you should be able to launch the executable like:
 
 ```bash
-cd RaycasterAttempt
+cd RaycasterAttemptLINUX
 ./RaycasterAttempt
 ```
 
