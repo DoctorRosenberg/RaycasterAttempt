@@ -1,5 +1,3 @@
-//TODO: Edit a bit. this is a copypasted code
-
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_render.h>
 #include "LoadUserSettings.hpp"
@@ -90,9 +88,7 @@ int main(int argc, char* argv[]) {
 
         if (keys[SDL_SCANCODE_W]) {
             OurPlayer.posX += OurPlayer.dirX * OurPlayer.speed * deltaTime;
-            OurPlayer.posY += OurPlayer.dirY * OurPlayer.speed * deltaTime;
-            //std::cout << OurPlayer.posX << ',' << OurPlayer.posY;
-    
+            OurPlayer.posY += OurPlayer.dirY * OurPlayer.speed * deltaTime;    
         }
         
         if (keys[SDL_SCANCODE_RIGHT]) {
