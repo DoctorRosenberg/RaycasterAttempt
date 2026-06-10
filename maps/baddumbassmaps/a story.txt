@@ -1,0 +1,5 @@
+These maps had incorrect size, and due to them, my raycaster worked incorrectly.
+You can load them in and check. They are archived here so you could see my mistakes.
+Start counting from 1, not 0.
+
+You are free to delete this folder.

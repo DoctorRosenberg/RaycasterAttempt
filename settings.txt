@@ -1,0 +1,8 @@
+ScreenWidth = 1280
+ScreenHeight = 720
+
+Map = ./maps/default_map.txt
+
+RotateSpeed = 0.5
+
+Fullscreen = 1
