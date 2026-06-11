@@ -11,6 +11,12 @@ RECOMMENDATION: each time the width ends when you're typing the values in the mi
 
 Values at the bottom (X Y) mean where the player will spawn. You can write floating point numbers in. As i said, Y is UP - DOWN, vertical; X is RIGHT - LEFT, horizontal.
 
+New values at the bottom that are below the older bottom values (X Y) mean where the player will look. This thing is kinda dangerous and can break your map, So I recommend using these values:
+1 0 - Looking right
+-1 0 - Looking left
+0 1 - Looking down
+0 -1 - Looking up
+
 ALSO: don't make ANY comments or extra additions. It may break the loading algorithm.
 
 ##So, what? What do i do?
@@ -18,7 +24,10 @@ You just have to fill the values in the middle with what you want your program t
 width height
 
 and then write where the player will spawn like this:
-width height.
+width height
+
+And then write where the player will look like this:
+width height
 
 ##What if i want to add something else than just walls?
 I didn't make this raycaster to be able to render ANYTHING except walls. You are free to edit the project, though.
