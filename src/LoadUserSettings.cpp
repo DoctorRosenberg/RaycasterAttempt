@@ -77,6 +77,8 @@ void LoadSettingsMap() {
     }
 
     MapFile >> settings::PlayerSpawnX >> settings::PlayerSpawnY;
+
+    MapFile >> settings::PlayerSpawnLookX >> settings::PlayerSpawnLookY;
     
     //std::cout << "Player created in: X=" << settings::PlayerSpawnX << ", Y=" << settings::PlayerSpawnY << std::endl;
     //std::cout << "-------------------------------------------\n" << std::endl;

@@ -1,5 +1,8 @@
 # 📦 Raycaster-attempt
 
+![Screenshot](./images/raycaster.png)
+
+
 This is my attempt at making a raycaster. Maybe its code will be used by me in the future.
 
 ## 🌟 Highlights

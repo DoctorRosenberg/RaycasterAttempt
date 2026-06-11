@@ -2,6 +2,7 @@
 
 #include <memory>
 #include <string>
+#include <cstdint>
 
 //This is settings namespace. Variables, defined by user or by default in settings.txt.
 namespace settings {
@@ -19,6 +20,9 @@ namespace settings {
  //where's player will be in the map
  inline float PlayerSpawnX;
  inline float PlayerSpawnY;
+ //where will player look
+ inline float PlayerSpawnLookX;
+ inline float PlayerSpawnLookY;
  
  //inline float LoadedMap[LoadedMapWidth][LoadedMapHeight];
  //i've used a STACK variable before.

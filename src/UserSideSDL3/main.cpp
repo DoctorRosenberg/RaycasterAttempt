@@ -47,7 +47,7 @@ int main(int argc, char* argv[]) {
     Uint32 lastTime = SDL_GetTicks();
     
     //He's going to fight with us, just wait!
-    Player OurPlayer = PlayerCreate(settings::PlayerSpawnX, settings::PlayerSpawnY, 1.0f, 0.0f); //OUR HERO! He's HERE!!
+    Player OurPlayer = PlayerCreate(settings::PlayerSpawnX, settings::PlayerSpawnY, settings::PlayerSpawnLookX, settings::PlayerSpawnLookY); //OUR HERO! He's HERE!!
     
     RenderWalls(&OurPlayer, pixelBuffer.data());
     
@@ -84,11 +84,12 @@ int main(int argc, char* argv[]) {
         const bool* keys = SDL_GetKeyboardState(NULL);
         if (keys[SDL_SCANCODE_ESCAPE]) running = false;
 
-        
+        float moveX = 0.0f;
+        float moveY = 0.0f;
 
         if (keys[SDL_SCANCODE_W]) {
-            OurPlayer.posX += OurPlayer.dirX * OurPlayer.speed * deltaTime;
-            OurPlayer.posY += OurPlayer.dirY * OurPlayer.speed * deltaTime;    
+            moveX += OurPlayer.dirX;
+            moveY += OurPlayer.dirY;
         }
         
         if (keys[SDL_SCANCODE_RIGHT]) {
@@ -99,8 +100,8 @@ int main(int argc, char* argv[]) {
         }
 
         if (keys[SDL_SCANCODE_S]) {
-            OurPlayer.posX -= OurPlayer.dirX * OurPlayer.speed * deltaTime;
-            OurPlayer.posY -= OurPlayer.dirY * OurPlayer.speed * deltaTime;
+            moveX -= OurPlayer.dirX;
+            moveY -= OurPlayer.dirY;
         }
 
         if (keys[SDL_SCANCODE_LEFT]) {
@@ -111,16 +112,30 @@ int main(int argc, char* argv[]) {
         }
 
         if (keys[SDL_SCANCODE_A]) {
-            OurPlayer.posX -= -OurPlayer.dirY * OurPlayer.speed * deltaTime;
-            OurPlayer.posY -= OurPlayer.dirX * OurPlayer.speed * deltaTime;
+            moveX -= -OurPlayer.dirY;
+            moveY -= OurPlayer.dirX;
         }
 
         if (keys[SDL_SCANCODE_D]) {
-            OurPlayer.posX += -OurPlayer.dirY * OurPlayer.speed * deltaTime;
-            OurPlayer.posY += OurPlayer.dirX * OurPlayer.speed * deltaTime;
+            moveX += -OurPlayer.dirY;
+            moveY += OurPlayer.dirX;
         }
 
+        
+        if (moveX != 0.0f || moveY != 0.0f) {
+            float length = std::sqrt(moveX * moveX + moveY * moveY);
+            moveX = (moveX / length) * OurPlayer.speed * deltaTime;
+            moveY = (moveY / length) * OurPlayer.speed * deltaTime;
 
+            float nextX = OurPlayer.posX + moveX;
+            float nextY = OurPlayer.posY + moveY;
+
+            float checkX = nextX + (moveX > 0 ? OurPlayer.PlayerRadius : -OurPlayer.PlayerRadius);
+            if (settings::LoadedMap[(int)OurPlayer.posY * settings::LoadedMapWidth + (int)checkX] == 0.0f) OurPlayer.posX = nextX;
+
+            float checkY = nextY + (moveY > 0 ? OurPlayer.PlayerRadius : -OurPlayer.PlayerRadius);
+            if (settings::LoadedMap[(int)checkY * settings::LoadedMapWidth + (int)OurPlayer.posX] == 0.0f) OurPlayer.posY = nextY; 
+        }
         
 
         std::fill(pixelBuffer.begin(), pixelBuffer.end(), 0x000000FF);
@@ -128,14 +143,6 @@ int main(int argc, char* argv[]) {
   
         // MY FUNCTION
         RenderWalls(&OurPlayer, pixelBuffer.data());
-        
-        
-        
-
-
-        //pixelBuffer[100 * settings::ScreenWidth + 100] = 0xFFFFFFFF;
-
-        // Upload pixel buffer layout to the SDL3 Streaming Texture
         
         SDL_UpdateTexture(texture, NULL, pixelBuffer.data(), settings::ScreenWidth * sizeof(uint32_t));
 

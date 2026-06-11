@@ -14,6 +14,8 @@ struct Player {
  
  const float speed = 2.0f;
  float rotatingSpeed;
+ 
+ const float PlayerRadius = 0.2f;
 };
 
 Player PlayerCreate(float SetPosX, float SetPosY, float SetDirX, float SetDirY); //Don't be afraid, that's struct creation.
